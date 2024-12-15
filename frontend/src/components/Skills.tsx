@@ -1,12 +1,12 @@
 "use client";
 
 import { Skill } from "@/lib/types";
-import axios from "axios";
 import { useRouter } from "next/navigation";
 import { Dispatch, SetStateAction, useEffect, useState } from "react";
 import { Input } from "./ui/input";
 import { Button } from "./ui/button";
 import { X } from "lucide-react";
+import api from "../lib/axiosConfig";
 
 const Skills = () => {
   const [skills, setSkills] = useState<Skill[] | null>(null);
@@ -15,9 +15,7 @@ const Skills = () => {
   useEffect(() => {
     const fetchSkills = async () => {
       try {
-        const res = await axios.get("http://localhost:3001/skills/user", {
-          withCredentials: true,
-        });
+        const res = await api.get("/skills/user");
         // console.log(res.data);
         // TODO: if res.data.message is unauthorised then redirect to login
 
@@ -37,15 +35,7 @@ const Skills = () => {
       // TODO: toast notification
     } else {
       try {
-        const res = await axios.post(
-          "http://localhost:3001/skills",
-          {
-            name: skill,
-          },
-          {
-            withCredentials: true,
-          }
-        );
+        const res = await api.post("/skills", { name: skill });
         // console.log(res.data);
         setSkill("");
         setSkills((prev) => {
@@ -103,12 +93,7 @@ const SkillBadge = ({
 }) => {
   const deleteSkill = async () => {
     try {
-      const res = await axios.delete(
-        `http://localhost:3001/skills/${skill.id}`,
-        {
-          withCredentials: true, //TODO : this is repeating with every request change this
-        }
-      );
+      const res = await api.delete(`/skills/${skill.id}`);
       setSkills((prev) => {
         if (prev) {
           return prev.filter((item) => item.id !== skill.id);
