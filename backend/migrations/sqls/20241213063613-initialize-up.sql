@@ -1,9 +1,13 @@
 /* Replace with your SQL commands */
+CREATE TYPE user_role AS ENUM ('mentor', 'mentee');
+
+
 CREATE TABLE users (
     id SERIAL PRIMARY KEY,                  
     username VARCHAR(50) NOT NULL,  
     email VARCHAR(100) NOT NULL UNIQUE,
-    image VARCHAR(100)
+    image VARCHAR(100),
+    role user_role
 );
 
 CREATE TABLE skills (

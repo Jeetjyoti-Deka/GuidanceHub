@@ -6,6 +6,7 @@ const cors = require("cors");
 const { getUsers } = require("./db/queries");
 const authRouter = require("./routes/authRouter");
 const skillRouter = require("./routes/skillRouter");
+const userRouter = require("./routes/userRouter");
 const authMiddleware = require("./middlewares/authMiddleware");
 
 const PORT = process.env.PORT || 3001;
@@ -25,7 +26,7 @@ app.get("/", (req, res) => {
   res.send("Hello world");
 });
 
-app.get("/users", getUsers);
+app.use("/users", authMiddleware, userRouter);
 
 app.use("/skills", authMiddleware, skillRouter);
 

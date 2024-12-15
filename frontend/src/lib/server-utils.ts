@@ -19,8 +19,6 @@ export async function googleResponse(authResult: AuthResponse) {
       const res = await axios.get(
         `http://localhost:3001/auth/google?code=${authResult.code}`
       );
-      // console.log(res.data);
-
       const token = res.data.token;
       const cookieStore = await cookies();
       cookieStore.set("jwt-token", token);
