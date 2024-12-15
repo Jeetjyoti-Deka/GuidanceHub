@@ -5,12 +5,19 @@ const cookieParser = require("cookie-parser");
 const cors = require("cors");
 const { getUsers } = require("./db/queries");
 const authRouter = require("./routes/authRouter");
+const skillRouter = require("./routes/skillRouter");
+const authMiddleware = require("./middlewares/authMiddleware");
 
 const PORT = process.env.PORT || 3001;
 
 const app = express();
 
-app.use(cors());
+app.use(
+  cors({
+    origin: "http://localhost:3000", // Frontend URL
+    credentials: true,
+  })
+);
 app.use(express.json());
 app.use(cookieParser());
 
@@ -19,6 +26,8 @@ app.get("/", (req, res) => {
 });
 
 app.get("/users", getUsers);
+
+app.use("/skills", authMiddleware, skillRouter);
 
 app.use("/auth", authRouter);
 

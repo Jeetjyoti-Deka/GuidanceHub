@@ -5,11 +5,11 @@ import { AuthResponse } from "./types";
 import { redirect } from "next/navigation";
 import axios from "axios";
 
-export async function hasToken() {
+export async function getToken() {
   const cookieStore = await cookies();
-  const hasJwtToken = cookieStore.has("jwt-token");
+  const jwtToken = cookieStore.get("jwt-token");
 
-  return hasJwtToken;
+  return jwtToken?.value;
 }
 
 export async function googleResponse(authResult: AuthResponse) {
@@ -19,7 +19,7 @@ export async function googleResponse(authResult: AuthResponse) {
       const res = await axios.get(
         `http://localhost:3001/auth/google?code=${authResult.code}`
       );
-      console.log(res.data);
+      // console.log(res.data);
 
       const token = res.data.token;
       const cookieStore = await cookies();
