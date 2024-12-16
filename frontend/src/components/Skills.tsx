@@ -21,7 +21,10 @@ const Skills = () => {
 
         setSkills(res.data.skills);
       } catch (error) {
-        console.log(error);
+        // console.log(error);
+        if ((error as any)?.status === 401) {
+          return router.push("/login");
+        }
         // TODO: toast notification that something went wrong
         router.push("/");
       }
@@ -30,7 +33,6 @@ const Skills = () => {
   }, []);
 
   const handleClick = async () => {
-    console.log(skill);
     if (skill === "") {
       // TODO: toast notification
     } else {

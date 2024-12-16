@@ -1,3 +1,4 @@
+import MatchedMentorsSection from "@/components/MatchedMentorsSection";
 import { getToken } from "@/lib/server-utils";
 import { redirect } from "next/navigation";
 
@@ -6,6 +7,10 @@ const MatchMakingPage = async () => {
   if (!token || token === "") {
     redirect("/login");
   }
-  return <div>MatchMakingPage</div>;
+  return (
+    <div>
+      <MatchedMentorsSection />
+    </div>
+  );
 };
 export default MatchMakingPage;

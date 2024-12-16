@@ -18,6 +18,7 @@ const getSkillsByUserId = async (req, res) => {
 };
 
 const createSkill = async (req, res) => {
+  // TODO: when creating skills makes changes like lowercase, trim etc
   let client;
   try {
     const user = req.user;

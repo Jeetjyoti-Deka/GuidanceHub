@@ -10,3 +10,15 @@ export type Skill = {
   user_id: number;
   name: string;
 };
+
+export type MatchedMentor = User & {
+  overlap_count: string;
+};
+
+export type User = {
+  id: number;
+  username: string;
+  email: string;
+  image: string | null;
+  role: string | null;
+};
