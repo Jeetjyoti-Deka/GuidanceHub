@@ -17,6 +17,35 @@ const getUser = async (req, res) => {
   }
 };
 
+// url : /users/search?skill=react
+const getMentorsBySkill = async (req, res) => {
+  let client;
+  // const user = req.user;
+  const { skill } = req.query;
+  if (!skill || skill == "") {
+    return res.status(400).json({ message: "Query missing." });
+  }
+  const page = req.query.page || 1;
+  const limit = req.query.limit || 10;
+  const offset = (page - 1) * limit || 0;
+  try {
+    client = await pool.connect();
+    const query = `SELECT u.*
+                    FROM users u
+                    JOIN skills s ON u.id = s.user_id
+                    WHERE s.name = $1 AND u.role = 'mentor'
+                    LIMIT $2 OFFSET $3;`;
+    const result = await client.query(query, [skill, limit, offset]);
+    // console.log(result.rows);
+    res.status(200).json({ message: "Mentors Found", mentors: result.rows });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ message: "Something went wrong" });
+  } finally {
+    client.release();
+  }
+};
+
 const getMatchedMentors = async (req, res) => {
   let client;
   try {
@@ -69,4 +98,5 @@ module.exports = {
   setUserRole,
   getUser,
   getMatchedMentors,
+  getMentorsBySkill,
 };

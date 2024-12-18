@@ -1,3 +1,4 @@
+import UserDiscoverySection from "@/components/UserDiscoverySection";
 import { getToken } from "@/lib/server-utils";
 import { redirect } from "next/navigation";
 
@@ -7,6 +8,10 @@ const UserDiscoveryPage = async () => {
     redirect("/login");
   }
 
-  return <div>UserDiscoveryPage</div>;
+  return (
+    <div>
+      <UserDiscoverySection />
+    </div>
+  );
 };
 export default UserDiscoveryPage;
