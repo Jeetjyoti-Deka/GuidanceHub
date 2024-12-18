@@ -9,13 +9,13 @@ const authMiddleware = async (req, res, next) => {
     return res.status(401).json({ message: "Unauthorized" });
   }
 
-  const user = jwt.verify(token, process.env.JWT_SECRET);
-  if (!user || !user.id) {
-    return res.status(401).json({ message: "Unauthorized" });
-  }
   let client;
   try {
     client = await pool.connect();
+    const user = jwt.verify(token, process.env.JWT_SECRET);
+    if (!user || !user.id) {
+      return res.status(401).json({ message: "Unauthorized" });
+    }
     const query = `SELECT * FROM users WHERE id=$1;`;
     const result = await client.query(query, [user.id]);
     if (result.rows.length === 0 || result.rows[0].email !== user.email) {
@@ -23,7 +23,11 @@ const authMiddleware = async (req, res, next) => {
     }
   } catch (error) {
     console.log(error);
-    res.status(500).json({ message: "Something went wrong" });
+    if (error.name === "TokenExpiredError") {
+      // console.error("Token has expired:", error.message);
+      return res.status(401).json({ message: "Unauthorized" });
+    }
+    return res.status(500).json({ message: "Something went wrong" });
   } finally {
     client.release();
   }
