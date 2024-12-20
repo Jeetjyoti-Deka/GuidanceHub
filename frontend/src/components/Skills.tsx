@@ -7,6 +7,7 @@ import { Input } from "./ui/input";
 import { Button } from "./ui/button";
 import { X } from "lucide-react";
 import api from "../lib/axiosConfig";
+import { capitalize } from "@/lib/utils";
 
 const Skills = () => {
   const [skills, setSkills] = useState<Skill[] | null>(null);
@@ -37,7 +38,9 @@ const Skills = () => {
       // TODO: toast notification
     } else {
       try {
-        const res = await api.post("/skills", { name: skill });
+        const res = await api.post("/skills", {
+          name: skill.toLowerCase().trim(),
+        });
         // console.log(res.data);
         setSkill("");
         setSkills((prev) => {
@@ -110,7 +113,7 @@ const SkillBadge = ({
 
   return (
     <div className="flex w-fit items-center gap-x-3 px-4 py-2 bg-slate-300 rounded-md border-r-2 border-b-2 border-slate-500 shadow-lg">
-      {skill.name}
+      {capitalize(skill.name)}
       <div
         onClick={deleteSkill}
         className="p-1 hover:bg-slate-500 cursor-pointer rounded-md font-bold group"

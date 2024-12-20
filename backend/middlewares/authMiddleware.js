@@ -10,9 +10,10 @@ const authMiddleware = async (req, res, next) => {
   }
 
   let client;
+  let user;
   try {
     client = await pool.connect();
-    const user = jwt.verify(token, process.env.JWT_SECRET);
+    user = jwt.verify(token, process.env.JWT_SECRET);
     if (!user || !user.id) {
       return res.status(401).json({ message: "Unauthorized" });
     }

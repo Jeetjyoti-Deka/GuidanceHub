@@ -22,7 +22,8 @@ const createSkill = async (req, res) => {
   let client;
   try {
     const user = req.user;
-    const { name } = req.body;
+    let { name } = req.body;
+    name = name.toLowerCase().trim();
     client = await pool.connect();
     const query = `INSERT INTO skills (name, user_id) VALUES ($1, $2) RETURNING *`;
     const result = await client.query(query, [name, user.id]);
