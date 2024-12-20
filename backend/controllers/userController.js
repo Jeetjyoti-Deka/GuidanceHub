@@ -60,6 +60,12 @@ const getMatchedMentors = async (req, res) => {
                     JOIN skills AS mentor_skills ON mentors.id = mentor_skills.user_id
                     JOIN skills AS mentee_skills ON mentee_skills.name = mentor_skills.name
                     WHERE mentors.role = 'mentor' AND mentee_skills.user_id = $1
+                    AND NOT EXISTS (
+                      SELECT 1
+                      FROM requests
+                      WHERE requests.sender_id = $1
+                      AND requests.receiver_id = mentors.id
+                    )
                     GROUP BY mentors.id, mentors.username, mentors.role, mentors.image, mentors.email
                     ORDER BY overlap_count DESC
                     LIMIT $2 OFFSET $3;

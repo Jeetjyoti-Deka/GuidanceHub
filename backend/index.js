@@ -7,6 +7,7 @@ const { getUsers } = require("./db/queries");
 const authRouter = require("./routes/authRouter");
 const skillRouter = require("./routes/skillRouter");
 const userRouter = require("./routes/userRouter");
+const requestRouter = require("./routes/requestRouter");
 const authMiddleware = require("./middlewares/authMiddleware");
 
 const PORT = process.env.PORT || 3001;
@@ -29,6 +30,8 @@ app.get("/", (req, res) => {
 app.use("/users", authMiddleware, userRouter);
 
 app.use("/skills", authMiddleware, skillRouter);
+
+app.use("/requests", authMiddleware, requestRouter);
 
 app.use("/auth", authRouter);
 

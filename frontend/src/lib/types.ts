@@ -22,3 +22,11 @@ export type User = {
   image: string | null;
   role: string | null;
 };
+
+export type ConnectionRequest = {
+  id: number;
+  receiver_id: number;
+  sender_id: number;
+  status: string;
+  created_at: string;
+};
