@@ -30,6 +30,7 @@ const getMentorsBySkill = async (req, res) => {
   const offset = (page - 1) * limit || 0;
   try {
     client = await pool.connect();
+    // improve this query to include skill overlap_count
     const query = `SELECT u.*
                     FROM users u
                     JOIN skills s ON u.id = s.user_id

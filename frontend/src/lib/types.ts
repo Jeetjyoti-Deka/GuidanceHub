@@ -30,3 +30,8 @@ export type ConnectionRequest = {
   status: string;
   created_at: string;
 };
+
+export type ConnectionUser = User & {
+  request_status: string;
+  request_id: number;
+};

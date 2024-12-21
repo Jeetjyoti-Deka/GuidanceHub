@@ -1,3 +1,4 @@
+import MentorSection from "@/components/MentorSection";
 import RoleSection from "@/components/RoleSection";
 import Skills from "@/components/Skills";
 import { getToken } from "@/lib/server-utils";
@@ -14,6 +15,7 @@ const ProfilePage = async () => {
       <RoleSection />
       {/* TODO: rename this to SkillSection */}
       <Skills />
+      <MentorSection />
     </div>
   );
 };

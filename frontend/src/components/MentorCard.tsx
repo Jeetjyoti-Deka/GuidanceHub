@@ -12,6 +12,7 @@ import { UserRound } from "lucide-react";
 import { Button } from "./ui/button";
 import api from "@/lib/axiosConfig";
 import { useEffect, useState } from "react";
+import UserImage from "./UserImage";
 
 const MentorCard = ({ mentor }: { mentor: MatchedMentor }) => {
   const [connectionRequest, setConnectionRequest] =
@@ -44,11 +45,7 @@ const MentorCard = ({ mentor }: { mentor: MatchedMentor }) => {
     <Card className="max-w-[260px]">
       <CardHeader className="flex flex-col items-center gap-y-1">
         <div className="flex items-center justify-center p-3 rounded-full bg-slate-200 w-fit">
-          {mentor.image ? (
-            <Image src={mentor.image} width={100} height={100} alt="user" />
-          ) : (
-            <UserRound className="w-8 h-8" />
-          )}
+          <UserImage img={mentor.image} />
         </div>
         <CardTitle>{mentor.username}</CardTitle>
       </CardHeader>
