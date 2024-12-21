@@ -9,7 +9,7 @@ import MentorCard from "./MentorCard";
 const MatchedMentorsSection = () => {
   const [mentors, setMentors] = useState<MatchedMentor[] | null>(null);
   const [page, setPage] = useState(1);
-  const [limit, setLimit] = useState(6);
+  const [limit, setLimit] = useState(20);
   const router = useRouter();
 
   useEffect(() => {

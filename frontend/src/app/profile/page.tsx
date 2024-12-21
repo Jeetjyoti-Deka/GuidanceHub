@@ -1,3 +1,5 @@
+import ConnectionsSection from "@/components/ConnectionsSection";
+import MenteeSection from "@/components/MenteeSection";
 import MentorSection from "@/components/MentorSection";
 import RoleSection from "@/components/RoleSection";
 import Skills from "@/components/Skills";
@@ -12,10 +14,13 @@ const ProfilePage = async () => {
 
   return (
     <div>
+      {/* TODO: wrapping all the section in a single section and then fetching the user and passing the user to each section (if possible) */}
       <RoleSection />
       {/* TODO: rename this to SkillSection */}
       <Skills />
-      <MentorSection />
+      {/* <MentorSection />
+      <MenteeSection /> */}
+      <ConnectionsSection />
     </div>
   );
 };

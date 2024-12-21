@@ -66,6 +66,7 @@ const getSingleRequest = async (req, res) => {
   }
 };
 
+// get all requests of a mentee to all the mentors
 const getMenteeRequests = async (req, res) => {
   const user = req.user;
 
@@ -77,6 +78,36 @@ const getMenteeRequests = async (req, res) => {
                     JOIN requests ON mentors.id = requests.receiver_id
                     WHERE requests.sender_id = $1
                     AND mentors.role = 'mentor';`;
+    const result = await client.query(query, [user.id]);
+    if (result.rowCount > 0) {
+      return res
+        .status(200)
+        .json({ message: "Requests Found", requests: result.rows });
+    } else {
+      return res
+        .status(200)
+        .json({ message: "Requests not found", requests: result.rows });
+    }
+  } catch (error) {
+    console.log(error);
+    return res.status(500).json({ message: "Something went wrong" });
+  } finally {
+    client.release();
+  }
+};
+
+// get all requests received by a mentor by mentees
+const getMentorRequests = async (req, res) => {
+  const user = req.user;
+
+  let client;
+  try {
+    client = await pool.connect();
+    const query = `SELECT mentees.id, mentees.username, mentees.role, mentees.image, mentees.email, requests.status AS request_status, requests.id AS request_id
+                    FROM users AS mentees
+                    JOIN requests ON mentees.id = requests.sender_id
+                    WHERE requests.receiver_id = $1
+                    AND mentees.role = 'mentee';`;
     const result = await client.query(query, [user.id]);
     if (result.rowCount > 0) {
       return res
@@ -116,9 +147,54 @@ const deleteConnectionRequest = async (req, res) => {
   }
 };
 
+const acceptRequest = async (req, res) => {
+  const user = req.user;
+  const { requestId } = req.query;
+  if (!requestId) {
+    return res.status(400).json({ message: "id missing" });
+  }
+
+  let client;
+  try {
+    client = await pool.connect();
+    const query = `UPDATE requests SET status = 'accepted' WHERE id=$1 AND receiver_id=$2;`;
+    const result = await client.query(query, [requestId, user.id]);
+    return res.status(200).json({ message: "Request updated" });
+  } catch (error) {
+    console.log(error);
+    return res.status(500).json({ message: "Something went wrong" });
+  } finally {
+    client.release();
+  }
+};
+
+const rejectRequest = async (req, res) => {
+  const user = req.user;
+  const { requestId } = req.query;
+  if (!requestId) {
+    return res.status(400).json({ message: "id missing" });
+  }
+
+  let client;
+  try {
+    client = await pool.connect();
+    const query = `UPDATE requests SET status = 'rejected' WHERE id=$1 AND receiver_id=$2;`;
+    const result = await client.query(query, [requestId, user.id]);
+    return res.status(200).json({ message: "Request updated" });
+  } catch (error) {
+    console.log(error);
+    return res.status(500).json({ message: "Something went wrong" });
+  } finally {
+    client.release();
+  }
+};
+
 module.exports = {
   createRequest,
   getSingleRequest,
   getMenteeRequests,
+  getMentorRequests,
   deleteConnectionRequest,
+  acceptRequest,
+  rejectRequest,
 };

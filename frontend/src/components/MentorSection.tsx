@@ -22,7 +22,7 @@ const MentorSection = () => {
     const fetchMentors = async () => {
       try {
         const res = await api.get("/requests/mentee");
-        console.log(res.data);
+        // console.log(res.data);
 
         setMentors(res.data.requests);
       } catch (error) {
@@ -34,7 +34,7 @@ const MentorSection = () => {
   }, []);
 
   return (
-    <div className="bg-slate-100 rounded-lg p-4 max-w-[500px] min-h-[500px] flex flex-col gap-y-2">
+    <div className="flex flex-col gap-y-2">
       {mentors ? (
         mentors.length === 0 ? (
           <div className="flex items-center justify-center min-h-[500px]">
