@@ -3,17 +3,10 @@ import { GoogleOAuthProvider } from "@react-oauth/google";
 import Image from "next/image";
 import Link from "next/link";
 
-const LoginPage = () => {
+const SignupPage = () => {
   return (
-    <div className="bg-primary flex items-center justify-center min-h-screen relative overflow-hidden">
-      <Image
-        src={"/bg_mesh.svg"}
-        alt="bg"
-        width={100}
-        height={100}
-        className="w-full object-cover absolute top-0 inset-x-0 z-10 opacity-50"
-      />
-      <div className="grid grid-cols-2 w-[800px] h-[500px] rounded-lg shadow-2xl relative z-20">
+    <div className="flex items-center justify-center min-h-screen">
+      <div className="grid grid-cols-2 w-[800px] h-[500px] rounded-lg shadow-2xl">
         <div className="bg-gradient-to-b from-primary/40 to-white rounded-l-lg flex flex-col items-center justify-center gap-y-3">
           <Image
             src={"/login.svg"}
@@ -26,23 +19,23 @@ const LoginPage = () => {
             <h1 className="font-semibold text-center">
               Unlock your journey with personalized guidance
             </h1>
-            <p className="text-center">Sign in to connect, learn, and grow!</p>
+            <p className="text-center">Sign up to connect, learn, and grow!</p>
           </div>
         </div>
-        <div className="flex flex-col items-center justify-center gap-y-3 relative bg-white rounded-r-lg">
+        <div className="flex flex-col items-center justify-center gap-y-3 relative">
           <div>GuidanceHub</div>
-          <h3 className="text-2xl font-semibold">Welcome Again!</h3>
+          <h3 className="text-2xl font-semibold">Welcome!</h3>
           <GoogleOAuthProvider clientId={process.env.GOOGLE_CLIENT_ID || ""}>
             <GoogleAuth />
           </GoogleOAuthProvider>
           <div className="absolute bottom-10 left-1/2 -translate-x-1/2">
             <p className="text-sm">
-              Are you new ?{" "}
+              Already a user ?{" "}
               <Link
                 className="text-blue-500 underline underline-offset-2"
-                href={"/sign-up"}
+                href={"/login"}
               >
-                Sign Up
+                login
               </Link>
             </p>
           </div>
@@ -51,4 +44,4 @@ const LoginPage = () => {
     </div>
   );
 };
-export default LoginPage;
+export default SignupPage;
