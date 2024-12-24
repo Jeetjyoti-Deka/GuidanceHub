@@ -7,7 +7,7 @@ const Navbar = () => {
     <Container>
       <nav className="flex items-center justify-between">
         <div>GuidanceHub</div>
-        <div className="flex items-center gap-x-10">
+        <div className="sm:flex hidden items-center gap-x-5 md:gap-x-10">
           <NavLinks />
         </div>
         <div>

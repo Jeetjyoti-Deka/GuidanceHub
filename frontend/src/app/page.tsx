@@ -10,12 +10,12 @@ export default function Home() {
     <div>
       <div className="min-h-screen">
         <Navbar />
-        <HeroSection />
+        {/* <HeroSection /> */}
       </div>
-      <FeaturesSection />
+      {/* <FeaturesSection />
       <EmpowerSection />
       <CTASection />
-      <ContactSection />
+      <ContactSection /> */}
     </div>
   );
 }
