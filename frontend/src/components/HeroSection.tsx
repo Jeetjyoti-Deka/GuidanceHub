@@ -1,17 +1,26 @@
+"use client";
+
 import { Clock, Star } from "lucide-react";
+import Image from "next/image";
 import Container from "./Container";
 import { Button } from "./ui/button";
-import Image from "next/image";
+
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+} from "@/components/ui/carousel";
+import Autoplay from "embla-carousel-autoplay";
 
 const HeroSection = () => {
   return (
     <div className="mt-20" id="home">
       <Container>
         <div className="flex flex-col items-center gap-y-4">
-          <h1 className="text-5xl font-bold text-green-950">
+          <h1 className="text-4xl font-bold text-green-950 text-center">
             THE FUTURE OF LEARNING NEW SKILLS.
           </h1>
-          <p>
+          <p className="text-center">
             Industry Experts are waiting for you to choose them. Let's get
             learning.
           </p>
@@ -35,7 +44,38 @@ const HeroSection = () => {
             <p className="text-green-950/40">from 100+ reviews</p>
           </div>
         </div>
-        <div className="grid grid-cols-5 gap-x-3 items-end">
+        <Carousel
+          className="min-[1124px]:hidden"
+          plugins={[
+            Autoplay({
+              active: true,
+              delay: 1400,
+              stopOnInteraction: false,
+              stopOnMouseEnter: false,
+            }),
+          ]}
+        >
+          <CarouselContent className="items-end">
+            <CarouselItem className="xs:basis-1/2 sm:basis-1/3">
+              <HeroCard1 />
+            </CarouselItem>
+            <CarouselItem className="xs:basis-1/2 sm:basis-1/3">
+              <HeroCard2 />
+            </CarouselItem>
+            <CarouselItem className="xs:basis-1/2 sm:basis-1/3">
+              <HeroCard3 />
+            </CarouselItem>
+            <CarouselItem className="xs:basis-1/2 sm:basis-1/3">
+              <HeroCard4 />
+            </CarouselItem>
+            <CarouselItem className="xs:basis-1/2 sm:basis-1/3">
+              <HeroCard5 />
+            </CarouselItem>
+          </CarouselContent>
+          {/* <CarouselPrevious />
+          <CarouselNext /> */}
+        </Carousel>
+        <div className="hidden min-[1124px]:grid grid-cols-5 gap-x-3 items-end">
           <HeroCard1 />
           <HeroCard2 />
           <HeroCard3 />

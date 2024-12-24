@@ -10,7 +10,7 @@ export default function Home() {
     <div>
       <div className="min-h-screen">
         <Navbar />
-        {/* <HeroSection /> */}
+        <HeroSection />
       </div>
       {/* <FeaturesSection />
       <EmpowerSection />
