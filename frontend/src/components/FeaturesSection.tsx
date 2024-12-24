@@ -15,7 +15,7 @@ import Autoplay from "embla-carousel-autoplay";
 
 const FeaturesSection = () => {
   return (
-    <div className="bg-primary py-12 mt-40">
+    <div className="bg-primary py-12 mt-20 sm:mt-40">
       <Container>
         <div className="flex flex-col items-center justify-center gap-y-3">
           <h2 className="text-white text-2xl xxs:text-4xl text-center font-bold">
