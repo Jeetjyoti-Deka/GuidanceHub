@@ -7,7 +7,7 @@ const EmpowerSection = () => {
     <Container>
       <div className="grid grid-cols-1 sm:grid-cols-3 mt-20 sm:mt-40">
         <div className="col-span-2 flex flex-col items-center sm:items-start justify-center gap-y-3">
-          <h2 className="text-primary text-5xl font-semibold max-sm:text-center">
+          <h2 className="text-primary text-3xl xs:text-5xl font-semibold max-sm:text-center">
             Empower your growth with personalized guidance
           </h2>
           <p className="text-primary/75 max-w-[500px] max-sm:text-center">

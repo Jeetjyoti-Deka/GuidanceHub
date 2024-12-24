@@ -5,8 +5,8 @@ const ContactSection = () => {
   return (
     <div className="bg-black/90 text-white/75 py-6">
       <Container>
-        <div className="grid grid-cols-6">
-          <div className="col-span-3">GuidanceHub</div>
+        <div className="grid grid-cols-2 xs:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 gap-y-8">
+          <div className="col-span-2 lg:col-span-3">GuidanceHub</div>
           <div>
             <h4 className="text-lg text-white mb-6">Company</h4>
             <div className="flex flex-col gap-y-2">
@@ -59,7 +59,7 @@ const ContactSection = () => {
             </div>
           </div>
         </div>
-        <div className="border-t-[1px] border-white/20 flex items-center justify-between pt-10 mt-10">
+        <div className="border-t-[1px] border-white/20 flex flex-col-reverse sm:flex-row items-center justify-between pt-10 mt-10 gap-y-8">
           <p>@ 2024 Prodmast, All rights reserved</p>
           <div className="flex items-center gap-x-6">
             <p>Privacy Policy</p>

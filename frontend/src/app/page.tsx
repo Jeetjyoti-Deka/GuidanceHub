@@ -14,8 +14,8 @@ export default function Home() {
       </div>
       <FeaturesSection />
       <EmpowerSection />
-      {/* <CTASection />
-      <ContactSection /> */}
+      <CTASection />
+      <ContactSection />
     </div>
   );
 }

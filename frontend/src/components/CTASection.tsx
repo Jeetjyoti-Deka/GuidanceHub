@@ -16,7 +16,7 @@ const CTASection = () => {
       />
       <Container>
         <div className="flex flex-col items-center justify-center gap-y-6 relative z-50">
-          <h2 className="text-white text-5xl font-semibold">
+          <h2 className="text-white text-3xl sm:text-5xl text-center font-semibold">
             From Aspiration to Achievement
           </h2>
           <p className="text-white/75 max-w-prose text-center">
