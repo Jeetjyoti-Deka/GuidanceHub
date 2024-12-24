@@ -72,8 +72,6 @@ const HeroSection = () => {
               <HeroCard5 />
             </CarouselItem>
           </CarouselContent>
-          {/* <CarouselPrevious />
-          <CarouselNext /> */}
         </Carousel>
         <div className="hidden min-[1124px]:grid grid-cols-5 gap-x-3 items-end">
           <HeroCard1 />

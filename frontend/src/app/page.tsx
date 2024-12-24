@@ -12,8 +12,8 @@ export default function Home() {
         <Navbar />
         <HeroSection />
       </div>
-      {/* <FeaturesSection />
-      <EmpowerSection />
+      <FeaturesSection />
+      {/* <EmpowerSection />
       <CTASection />
       <ContactSection /> */}
     </div>
