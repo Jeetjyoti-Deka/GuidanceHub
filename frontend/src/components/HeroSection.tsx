@@ -1,12 +1,12 @@
 import { Clock, Star } from "lucide-react";
-import ComponentMarginWrapper from "./ComponentMarginWrapper";
+import Container from "./Container";
 import { Button } from "./ui/button";
 import Image from "next/image";
 
 const HeroSection = () => {
   return (
     <div className="mt-20" id="home">
-      <ComponentMarginWrapper>
+      <Container>
         <div className="flex flex-col items-center gap-y-4">
           <h1 className="text-5xl font-bold text-green-950">
             THE FUTURE OF LEARNING NEW SKILLS.
@@ -42,7 +42,7 @@ const HeroSection = () => {
           <HeroCard4 />
           <HeroCard5 />
         </div>
-      </ComponentMarginWrapper>
+      </Container>
     </div>
   );
 };

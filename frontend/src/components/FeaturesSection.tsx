@@ -1,5 +1,5 @@
 import { FEATURES } from "@/lib/constants";
-import ComponentMarginWrapper from "./ComponentMarginWrapper";
+import Container from "./Container";
 
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { MoveUpRight } from "lucide-react";
@@ -7,7 +7,7 @@ import { MoveUpRight } from "lucide-react";
 const FeaturesSection = () => {
   return (
     <div className="bg-primary py-12 mt-40">
-      <ComponentMarginWrapper>
+      <Container>
         <div className="flex flex-col items-center justify-center gap-y-3">
           <h2 className="text-white text-4xl font-bold">
             Unlock Your Potential With Our Platform
@@ -21,7 +21,7 @@ const FeaturesSection = () => {
             <FeatureCard key={i} feature={feature} />
           ))}
         </div>
-      </ComponentMarginWrapper>
+      </Container>
     </div>
   );
 };

@@ -1,10 +1,10 @@
 import Image from "next/image";
-import ComponentMarginWrapper from "./ComponentMarginWrapper";
+import Container from "./Container";
 
 const ContactSection = () => {
   return (
     <div className="bg-black/90 text-white/75 py-6">
-      <ComponentMarginWrapper>
+      <Container>
         <div className="grid grid-cols-6">
           <div className="col-span-3">GuidanceHub</div>
           <div>
@@ -66,7 +66,7 @@ const ContactSection = () => {
             <p>Terms & Conditions</p>
           </div>
         </div>
-      </ComponentMarginWrapper>
+      </Container>
     </div>
   );
 };

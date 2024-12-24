@@ -1,10 +1,10 @@
 import Image from "next/image";
-import ComponentMarginWrapper from "./ComponentMarginWrapper";
+import Container from "./Container";
 import { Button } from "./ui/button";
 
 const EmpowerSection = () => {
   return (
-    <ComponentMarginWrapper>
+    <Container>
       <div className="grid grid-cols-3 mt-40">
         <div className="col-span-2 flex flex-col items-start justify-center gap-y-3">
           <h2 className="text-primary text-5xl font-semibold">
@@ -31,7 +31,7 @@ const EmpowerSection = () => {
           />
         </div>
       </div>
-    </ComponentMarginWrapper>
+    </Container>
   );
 };
 export default EmpowerSection;

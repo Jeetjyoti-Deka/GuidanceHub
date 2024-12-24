@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import ComponentMarginWrapper from "./ComponentMarginWrapper";
+import Container from "./Container";
 import { Button } from "./ui/button";
 
 const CTASection = () => {
@@ -14,7 +14,7 @@ const CTASection = () => {
         height={100}
         className="w-full object-cover absolute top-0 inset-x-0 z-10 opacity-50"
       />
-      <ComponentMarginWrapper>
+      <Container>
         <div className="flex flex-col items-center justify-center gap-y-6 relative z-50">
           <h2 className="text-white text-5xl font-semibold">
             From Aspiration to Achievement
@@ -28,7 +28,7 @@ const CTASection = () => {
             Get Started
           </Button>
         </div>
-      </ComponentMarginWrapper>
+      </Container>
     </div>
   );
 };

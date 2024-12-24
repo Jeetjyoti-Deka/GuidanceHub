@@ -1,10 +1,10 @@
-import ComponentMarginWrapper from "./ComponentMarginWrapper";
+import Container from "./Container";
 import NavLinks from "./NavLinks";
 import { Button } from "./ui/button";
 
 const Navbar = () => {
   return (
-    <ComponentMarginWrapper>
+    <Container>
       <nav className="flex items-center justify-between">
         <div>GuidanceHub</div>
         <div className="flex items-center gap-x-10">
@@ -16,7 +16,7 @@ const Navbar = () => {
           </Button>
         </div>
       </nav>
-    </ComponentMarginWrapper>
+    </Container>
   );
 };
 export default Navbar;
