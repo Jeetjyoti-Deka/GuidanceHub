@@ -7,11 +7,9 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import Image from "next/image";
-import { UserRound } from "lucide-react";
-import { Button } from "./ui/button";
 import api from "@/lib/axiosConfig";
 import { useEffect, useState } from "react";
+import { Button } from "./ui/button";
 import UserImage from "./UserImage";
 
 const MentorCard = ({ mentor }: { mentor: MatchedMentor }) => {
@@ -49,14 +47,16 @@ const MentorCard = ({ mentor }: { mentor: MatchedMentor }) => {
         </div>
         <CardTitle>{mentor.username}</CardTitle>
       </CardHeader>
-      <CardContent>
+      <CardContent className="flex items-center justify-center">
         <p>Matched Skills: {mentor.overlap_count}</p>
       </CardContent>
-      <CardFooter>
+      <CardFooter className="flex items-center justify-center">
         {connectionRequest ? (
           <div>{connectionRequest.status}</div>
         ) : (
-          <Button onClick={makeConnectionRequest}>Connect</Button>
+          <Button variant={"secondary"} onClick={makeConnectionRequest}>
+            Connect
+          </Button>
         )}
       </CardFooter>
     </Card>
