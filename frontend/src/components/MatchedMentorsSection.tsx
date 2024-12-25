@@ -38,10 +38,15 @@ const MatchedMentorsSection = () => {
         <div>No Mentors Matched...</div>
       ) : (
         <div>
-          {/* TODO: Implement pagination from shadcn */}
-          {mentors.map((mentor) => (
-            <MentorCard key={mentor.id} mentor={mentor} />
-          ))}
+          <h2 className="text-2xl font-semibold mb-3 text-center">
+            Recommended Mentors based on your Skills
+          </h2>
+          <div className="grid grid-cols-1 xs:grid-cols-2 lg:grid-cols-3 gap-y-4 gap-x-3">
+            {/* TODO: Implement pagination from shadcn */}
+            {mentors.map((mentor) => (
+              <MentorCard key={mentor.id} mentor={mentor} />
+            ))}
+          </div>
         </div>
       )}
     </div>

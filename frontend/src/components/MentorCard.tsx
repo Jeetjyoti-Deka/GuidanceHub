@@ -42,7 +42,7 @@ const MentorCard = ({ mentor }: { mentor: MatchedMentor }) => {
   };
 
   return (
-    <Card className="max-w-[260px]">
+    <Card className="w-full max-w-[260px] justify-self-center">
       <CardHeader className="flex flex-col items-center gap-y-1">
         <div className="flex items-center justify-center p-3 rounded-full bg-slate-200 w-fit">
           <UserImage img={mentor.image} />

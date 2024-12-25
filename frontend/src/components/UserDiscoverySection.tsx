@@ -31,12 +31,16 @@ const UserDiscoverySection = () => {
 
   return (
     <div>
-      <Input
-        placeholder="Search Mentor through skills... Eg: React"
-        value={skill}
-        onChange={(e) => setSkill(e.target.value)}
-      />
-      <Button onClick={searchMentors}>Search</Button>
+      <div className="flex items-center gap-x-3 mb-4">
+        <Input
+          placeholder="Search Mentor through skills... Eg: React"
+          value={skill}
+          onChange={(e) => setSkill(e.target.value)}
+        />
+        <Button onClick={searchMentors} variant={"secondary"}>
+          Search
+        </Button>
+      </div>
 
       <div>
         {searchedMentors === null ? (
@@ -46,7 +50,7 @@ const UserDiscoverySection = () => {
         ) : searchedMentors.length === 0 ? (
           <div>No mentors found</div>
         ) : (
-          <div>
+          <div className="grid grid-cols-1 xs:grid-cols-2 lg:grid-cols-3 gap-y-4 gap-x-3">
             {searchedMentors.map((mentor) => (
               <UserCard key={mentor.id} user={mentor} />
             ))}

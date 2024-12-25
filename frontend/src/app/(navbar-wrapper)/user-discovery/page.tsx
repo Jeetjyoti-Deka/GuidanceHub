@@ -1,3 +1,4 @@
+import Container from "@/components/Container";
 import UserDiscoverySection from "@/components/UserDiscoverySection";
 import { getToken } from "@/lib/server-utils";
 import { redirect } from "next/navigation";
@@ -10,7 +11,9 @@ const UserDiscoveryPage = async () => {
 
   return (
     <div>
-      <UserDiscoverySection />
+      <Container>
+        <UserDiscoverySection />
+      </Container>
     </div>
   );
 };
