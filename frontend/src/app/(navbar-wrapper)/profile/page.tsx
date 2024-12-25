@@ -1,6 +1,5 @@
-import ConnectionsSection from "@/components/ConnectionsSection";
-import RoleSection from "@/components/RoleSection";
-import Skills from "@/components/Skills";
+import Container from "@/components/Container";
+import UserWrapper from "@/components/UserWrapper";
 import { getToken } from "@/lib/server-utils";
 import { redirect } from "next/navigation";
 
@@ -12,11 +11,12 @@ const ProfilePage = async () => {
 
   return (
     <div>
-      {/* TODO: wrapping all the section in a single section and then fetching the user and passing the user to each section (if possible) */}
-      <RoleSection />
-      {/* TODO: rename this to SkillSection */}
-      <Skills />
-      <ConnectionsSection />
+      <Container>
+        {/* TODO: wrapping all the section in a single section and then fetching the user and passing the user to each section (if possible) */}
+        <UserWrapper />
+
+        {/* TODO: rename this to SkillSection */}
+      </Container>
     </div>
   );
 };

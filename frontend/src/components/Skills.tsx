@@ -57,33 +57,38 @@ const Skills = () => {
   };
 
   return (
-    <div>
-      <div className="max-w-xl flex items-center gap-x-2">
-        <Input
-          value={skill}
-          onChange={(e) => setSkill(e.target.value)}
-          placeholder="Enter your skills... eg: React"
-        />
-        <Button onClick={handleClick}>+ Add</Button>
-      </div>
-      <div className="mt-3">
-        {skills ? (
-          skills.length > 0 ? (
-            <div className="flex items-center gap-x-3 flex-wrap">
-              {skills.map((skill) => (
-                <SkillBadge
-                  skill={skill}
-                  key={skill.id}
-                  setSkills={setSkills}
-                />
-              ))}
-            </div>
+    <div className="mt-7">
+      <h3 className="text-2xl font-semibold mb-2">Skills</h3>
+      <div className="bg-slate-100 px-8 py-3 rounded-lg min-h-[228px]">
+        <div className="flex items-center gap-x-2">
+          <Input
+            value={skill}
+            onChange={(e) => setSkill(e.target.value)}
+            placeholder="Enter your skills... eg: React"
+          />
+          <Button onClick={handleClick} variant={"secondary"}>
+            + Add
+          </Button>
+        </div>
+        <div className="mt-3">
+          {skills ? (
+            skills.length > 0 ? (
+              <div className="flex items-center gap-x-3 gap-y-4 flex-wrap max-w-2xl">
+                {skills.map((skill) => (
+                  <SkillBadge
+                    skill={skill}
+                    key={skill.id}
+                    setSkills={setSkills}
+                  />
+                ))}
+              </div>
+            ) : (
+              <div>No skills found.Please enter new skills...</div>
+            )
           ) : (
-            <div>No skills found.Please enter new skills...</div>
-          )
-        ) : (
-          <div>Loading...</div>
-        )}
+            <div>Loading...</div>
+          )}
+        </div>
       </div>
     </div>
   );

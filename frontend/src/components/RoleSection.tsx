@@ -9,12 +9,13 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
 } from "@/components/ui/alert-dialog";
-import { useRouter } from "next/navigation";
 import api from "@/lib/axiosConfig";
-import { useEffect, useState } from "react";
+import { User } from "@/lib/types";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
 
-const RoleSection = () => {
-  const [userRole, setUserRole] = useState("");
+const RoleSection = ({ user }: { user: User | null }) => {
+  const [userRole, setUserRole] = useState(user?.role);
   const router = useRouter();
 
   const setRole = async (role: string) => {
@@ -29,23 +30,6 @@ const RoleSection = () => {
       router.push("/login");
     }
   };
-
-  useEffect(() => {
-    const getUserRole = async () => {
-      // send request to set role for the user
-      try {
-        const res = await api.get("/users");
-        // console.log(res.data);
-
-        const role = res.data.user?.role;
-        setUserRole(role);
-      } catch (error) {
-        // TODO: toast notification something went wrong. Try logging again.
-        router.push("/login");
-      }
-    };
-    getUserRole();
-  }, []);
 
   if (userRole === null) {
     return (

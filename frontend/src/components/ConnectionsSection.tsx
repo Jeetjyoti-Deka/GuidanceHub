@@ -1,39 +1,26 @@
 "use client";
 
-import api from "@/lib/axiosConfig";
 import { User } from "@/lib/types";
-import { useEffect, useState } from "react";
-import MentorSection from "./MentorSection";
 import MenteeSection from "./MenteeSection";
+import MentorSection from "./MentorSection";
 
-const ConnectionsSection = () => {
-  const [user, setUser] = useState<User | null>(null);
-  useEffect(() => {
-    const fetchUser = async () => {
-      try {
-        const res = await api.get("/users");
-        // console.log(res.data);
-        setUser(res.data.user);
-      } catch (error) {
-        // TODO: notification - could not fetch user. Try again later.
-      }
-    };
-    fetchUser();
-  }, []);
-
+const ConnectionsSection = ({ user }: { user: User | null }) => {
   return (
-    <div className="bg-slate-100 rounded-lg p-4 max-w-[500px] min-h-[500px]">
-      {user ? (
-        user.role === "mentor" ? (
-          <MenteeSection />
+    <div className="mt-7">
+      <h3 className="text-2xl font-semibold mb-2">Connections</h3>
+      <div className="bg-slate-100 rounded-lg p-4 w-full min-h-[300px]">
+        {user ? (
+          user.role === "mentor" ? (
+            <MenteeSection />
+          ) : (
+            <MentorSection />
+          )
         ) : (
-          <MentorSection />
-        )
-      ) : (
-        <div className="flex items-center justify-center min-h-[500px]">
-          <p>Loading...</p>
-        </div>
-      )}
+          <div className="flex items-center justify-center min-h-[500px]">
+            <p>Loading...</p>
+          </div>
+        )}
+      </div>
     </div>
   );
 };
