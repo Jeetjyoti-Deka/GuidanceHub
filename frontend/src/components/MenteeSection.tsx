@@ -13,8 +13,8 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
-import { DataTable } from "@/app/profile/data-table";
-import { MenteeColumns } from "@/app/profile/columns";
+import { DataTable } from "@/app/(navbar-wrapper)/profile/data-table";
+import { MenteeColumns } from "@/app/(navbar-wrapper)/profile/columns";
 
 // this is the mentee section in the mentor profile page
 const MenteeSection = () => {
