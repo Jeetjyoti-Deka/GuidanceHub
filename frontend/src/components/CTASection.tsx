@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Container from "./Container";
 import { Button } from "./ui/button";
+import Link from "next/link";
 
 const CTASection = () => {
   return (
@@ -24,9 +25,11 @@ const CTASection = () => {
             meaningful connections, gain valuable insights, and achieve your
             goals faster. Start your journey today!
           </p>
-          <Button variant={"secondary"} size={"secondary"} className="mt-6">
-            Get Started
-          </Button>
+          <Link href={"/login"}>
+            <Button variant={"secondary"} size={"secondary"} className="mt-6">
+              Get Started
+            </Button>
+          </Link>
         </div>
       </Container>
     </div>

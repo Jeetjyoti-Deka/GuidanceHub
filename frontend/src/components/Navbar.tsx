@@ -1,3 +1,4 @@
+import Link from "next/link";
 import Container from "./Container";
 import NavLinks from "./NavLinks";
 import { Button } from "./ui/button";
@@ -11,9 +12,11 @@ const Navbar = () => {
           <NavLinks />
         </div>
         <div>
-          <Button variant={"primary"} size={"primary"}>
-            Sign Up
-          </Button>
+          <Link href={"/sign-up"}>
+            <Button variant={"primary"} size={"primary"}>
+              Sign Up
+            </Button>
+          </Link>
         </div>
       </nav>
     </Container>

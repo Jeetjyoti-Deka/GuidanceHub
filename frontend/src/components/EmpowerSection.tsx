@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Container from "./Container";
 import { Button } from "./ui/button";
+import Link from "next/link";
 
 const EmpowerSection = () => {
   return (
@@ -17,9 +18,11 @@ const EmpowerSection = () => {
             make it happen. Take charge of your journey and thrive with the
             power of mentorship.
           </p>
-          <Button variant={"tertiary"} size={"secondary"} className="mt-6">
-            Get Started
-          </Button>
+          <Link href={"/login"}>
+            <Button variant={"tertiary"} size={"secondary"} className="mt-6">
+              Get Started
+            </Button>
+          </Link>
         </div>
         <div className="max-sm:mt-10">
           <Image

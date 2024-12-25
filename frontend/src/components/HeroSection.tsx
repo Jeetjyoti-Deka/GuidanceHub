@@ -11,6 +11,7 @@ import {
   CarouselItem,
 } from "@/components/ui/carousel";
 import Autoplay from "embla-carousel-autoplay";
+import Link from "next/link";
 
 const HeroSection = () => {
   return (
@@ -25,12 +26,16 @@ const HeroSection = () => {
             learning.
           </p>
           <div className="flex items-center gap-x-4 mt-4">
-            <Button variant={"primary"} size={"primary"}>
-              Get Started
-            </Button>
-            <Button variant={"secondary"} size={"secondary"}>
-              Try Demo
-            </Button>
+            <Link href={"/login"}>
+              <Button variant={"primary"} size={"primary"}>
+                Get Started
+              </Button>
+            </Link>
+            <Link href={"/login"}>
+              <Button variant={"secondary"} size={"secondary"}>
+                Try Demo
+              </Button>
+            </Link>
           </div>
           <div className="flex flex-col items-center gap-y-1">
             <div className="flex items-center gap-x-1">
