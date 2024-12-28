@@ -1,4 +1,15 @@
 services:
+  backend:
+    image: node:23-alpine3.20
+    container_name: server
+    ports:
+      - "3001:3001"
+    build:
+      context: .
+      dockerfile: server.dockerfile
+    depends_on:
+      - postgres
+
   postgres:
     image: postgres
     container_name: postgres_db

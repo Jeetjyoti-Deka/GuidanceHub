@@ -12,3 +12,9 @@ down:
 # Remove data volume
 clean:
 	docker-compose -f $(COMPOSE_FILE) down -v
+
+#build server
+build_server:
+	@echo "Building the server binary..."
+	docker-compose build backend
+	@echo "Done!"
