@@ -4,6 +4,7 @@ import { cookies } from "next/headers";
 import { AuthResponse } from "./types";
 import { redirect } from "next/navigation";
 import axios from "axios";
+import api from "./axiosConfig";
 
 export async function getToken() {
   const cookieStore = await cookies();
@@ -16,9 +17,7 @@ export async function googleResponse(authResult: AuthResponse) {
   let isLogin;
   try {
     if (authResult && "code" in authResult) {
-      const res = await axios.get(
-        `http://localhost:3001/auth/google?code=${authResult.code}`
-      );
+      const res = await api.get(`/auth/google?code=${authResult.code}`);
       const token = res.data.token;
       const cookieStore = await cookies();
       cookieStore.set("jwt-token", token);
