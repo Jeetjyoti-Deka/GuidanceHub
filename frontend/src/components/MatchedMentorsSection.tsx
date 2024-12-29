@@ -15,10 +15,16 @@ const MatchedMentorsSection = () => {
   useEffect(() => {
     const fetchMentors = async () => {
       try {
+        console.log("API url: ", process.env.API_URL);
+
         const res = await api.get(`/users/match?page=${page}&limit=${limit}`);
+        console.log(res);
+
         setMentors(res.data.mentors);
       } catch (error) {
         // TODO: toast notification - not logged in.
+        console.log(error);
+
         if ((error as any)?.status === 401) {
           return router.push("/login");
         }
